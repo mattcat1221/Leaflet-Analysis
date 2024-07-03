@@ -44,3 +44,15 @@ d3.json(url, data => {
 
     }).addTo(map);
 });
+
+let legend = L.control({position:'bottomright'});
+
+legend.onAdd = () => {
+    let div = L.DomUtil.create('div','legend');
+
+    div.innerHTML +='<h1>HELLO there!!!<h1>'
+
+    return div;
+};
+
+legend.addTo(map);
