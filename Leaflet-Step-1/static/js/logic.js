@@ -7,40 +7,41 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 const url ="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson";
 
 d3.json(url, data => {
-    console.log(data);
-
     L.geoJSON(data, {
-        pointToLayer: (geoJsonPoint, latlng) => {
-            return L.circleMarker(latlng);
+
+        pointToLayer: (data, latlng) => {
+            return L.circleMarker(latlng)
         },
-        style: feature => {
-            let depth = feature.geometry.coordinates[2];
+
+        style: function (feature) {
             let mag = feature.properties.mag;
-
-            console.log (feature.properties.mag)
-
+            let depth = feature.geometry.coordinates[2];
 
             return {
                 radius: mag*2,
-                color: 'black',
+                fillOpacity: 1,
                 weight: 1,
-                fillOpacity: .65,
-                fillColor: 
-                    depth > 90 ? 'red' :
-                    depth > 70 ? 'darkorange' :
-                    depth > 50 ? 'orange' :
-                    depth > 30 ? 'yellow' :
-                    depth > 10 ? 'lime' : 'green'
+                color: 'black',
+                fillColor:
+                    depth < 10 ? 'green' : 
+                    depth < 30 ? 'lime' :
+                    depth < 50 ? 'yellow' :
+                    depth < 70 ? 'orange' :
+                    depth < 90 ? 'darkorange' : 'red'
             };
         }
-    }).bindPopup(layer => {
-        let depth = layer.feature.geometry.coordinates[2];
+
+    }).bindPopup(function (layer) {
         let place = layer.feature.properties.place;
+        let mag = layer.feature.properties.mag;
         let time = new Date(layer.feature.properties.time).toLocaleString();
-        let magnitude = layer.feature.properties.mag;
+        let depth = layer.feature.geometry.coordinates[2];
 
-        return `<h3>${place}<br>Magnitude: ${magnitude}<br>Depth: ${depth}<br>${time}</h3>`;
-
+        return `<h3>
+            ${place}<br>
+            Magnitude: ${mag}<br>
+            Depth: ${depth}<br>
+            ${time}</h3>`
 
     }).addTo(map);
 });
@@ -50,9 +51,14 @@ let legend = L.control({position:'bottomright'});
 legend.onAdd = () => {
     let div = L.DomUtil.create('div','legend');
 
-    div.innerHTML +='<h1>HELLO there!!!<h1>'
+    div.innerHTML +=`
+        <i style="background: green"></i>-10 -10<br>
+        <i style="background: lime"></i>10 - 30<br>
+        <i style="background: yellow"></i>30 - 50<br>
+        <i style="background: orange"></i> 50 - 70<br>
+        <i style="background: darkorange"></i> 70 - 90<br>
+        <i style="background: red"></i> 90+<br>`;
 
     return div;
 };
-
 legend.addTo(map);
