@@ -7,7 +7,7 @@
 ## Description
 Using HTML, CSS, JavaScript, Leaflet libraries and MapBox, create an interactive map to visualise earthquake and tectonic plate boundaries data. The objective of the visualisation is to communicate these scientific data to the general public and relevant government organizations on issues facing our planet. The interactive map also illustrates the relationship between tectonic plates and seismic activity. Sources of data as follows:  Earthquake data from the Past 7 Days in GeoJSON format from United States Geological Survey (USGS) Tectonic fault lines data in GeoJSON format from fraxen @ GitHub
 
-![app_image](file:///Users/cmatthews/Pictures/Photos%20Library.photoslibrary/private/com.apple.Photos/ExternalEditSessions/4FE47100-9E99-4CFA-B849-3D01DA28CA6C/Image%207-7-24%20at%208.21%E2%80%AFPM.jpeg)
+![app_image](Image%207-7-24%20at%208.21%E2%80%AFPM.jpeg)
 
 ## Table of Contents
 - [Installation](#installation)
