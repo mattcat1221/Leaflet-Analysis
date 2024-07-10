@@ -2,11 +2,9 @@
 
 const init = async () => {
 
-    var map = L.map('map').setView([0, 0], 2);
-    const url1 ="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson";
-    const url2 ="https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_plates.json";
+    const map = L.map('map').setView([0, 0], 2);   
+    const legend = L.control({ position: 'bottomright' });
     
-    let legend = L.control({ position: 'bottomright' });
     legend.onAdd = () => {
       let div = L.DomUtil.create('div', 'legend');
 
@@ -58,10 +56,8 @@ const init = async () => {
         })
     };
 
-    let data = await ( await fetch(url1)).json();
-    let plates = await ( await fetch(url2)).json();
-
-    // L.geoJSON(plates, {type:'polylines',color:'red'}).addTo(map)
+    const url1 ="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson";
+    let data = await ( await fetch(url1)).json(); 
 
     let earthquakes = L.geoJSON(data, {
 
@@ -100,9 +96,15 @@ const init = async () => {
         });
 
         earthquakes.addTo(map)
+  
+  const url2 ="https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json";
+  let plates = await ( await fetch(url2)).json();
+
+ let tectonicplates = L.geoJSON(plates, {type:'polylines',color:'blue',weight:1});
+    
 
         maps.topo.addTo(map);
-        L.control.layers(maps, {earthquakes}).addTo(map);
+        L.control.layers(maps, {"Earthquakes":earthquakes, "Tectonic Plates":tectonicplates},{collapsed:false}).addTo(map);
 };
 
 init();
