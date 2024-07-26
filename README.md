@@ -2,8 +2,7 @@
 ![MIT](https://img.shields.io/badge/License-MIT-blue)
 
 ## Website: 
-[website](https://github.com/mattcat1221/Leaflet-Analysis)
-file:///Users/cmatthews/Desktop/Data-Analyst/Projects/Leaflet-Analysis/Leaflet-Step-2/index.html
+https://mattcat1221.github.io/Leaflet-Analysis/Leaflet-Step-2/index.html
 
 ## Description
 Using HTML, CSS, JavaScript, Leaflet libraries and MapBox, create an interactive map to visualise earthquake and tectonic plate boundaries data. The objective of the visualisation is to communicate these scientific data to the general public and relevant government organizations on issues facing our planet. The interactive map also illustrates the relationship between tectonic plates and seismic activity. Sources of data as follows:  Earthquake data from the Past 7 Days in GeoJSON format from United States Geological Survey (USGS) Tectonic fault lines data in GeoJSON format from fraxen @ GitHub
