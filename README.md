@@ -2,7 +2,7 @@
 ![MIT](https://img.shields.io/badge/License-MIT-blue)
 
 ## Website: 
-https://mattcat1221.github.io/Leaflet-Analysis/Leaflet-Step-2/index.html
+[Leaflet Analysis](https://mattcat1221.github.io/Leaflet-Analysis/Leaflet-Step-2/index.html)
 
 ## Description
 Using HTML, CSS, JavaScript, Leaflet libraries and MapBox, I created an interactive map to visualise earthquake and tectonic plate boundaries data. The objective of the visualisation is to communicate this scientific data to the general public and relevant government organizations on issues facing our planet. The interactive map illustrates the relationship between tectonic plates and seismic activity. 
